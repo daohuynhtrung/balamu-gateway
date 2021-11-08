@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Inject, Post, Param, Delete, Patch } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Inject,
+  Post,
+  Param,
+  Delete,
+  Patch,
+} from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -10,8 +19,10 @@ export class ProductsController {
   constructor(@Inject('PRODUCTS_SERVICE') private client: ClientProxy) {}
 
   @Post()
-  createProduct(@Body() createProductDto: CreateProductDto): Observable<number> {
-    return this.client.send<number>('createProduct', createProductDto);
+  createProduct(
+    @Body() createProductDto: CreateProductDto,
+  ): Observable<Product> {
+    return this.client.send<Product>('createProduct', createProductDto);
   }
 
   @Get()
@@ -27,7 +38,7 @@ export class ProductsController {
   @Patch(':id')
   updateProduct(
     @Param('id') id: string,
-    @Body() updateProductDto: UpdateProductDto
+    @Body() updateProductDto: UpdateProductDto,
   ): Observable<Product> {
     if (!updateProductDto.id) {
       updateProductDto.id = id;

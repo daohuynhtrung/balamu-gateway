@@ -11,9 +11,9 @@ import { ProductsModule } from './products/products.module';
     ConfigModule.forRoot(),
     AccountModule,
     NotificationsModule,
-    ProductsModule
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,7 +1,5 @@
-export class CreateProductDto {
-  title: string;
-  description!: string;
-  amount: number;
+export interface CreateProductDto {
+  name: string;
+  description: string;
   price: number;
-  productOwnerId: string;
 }

@@ -1,8 +1,8 @@
 version: "3.7"
 services:
   gateway:
-    image: node:alpine
-    container_name: gateway-rabbitmq
+    image: node:latest
+    container_name: balamu-gateway
     environment:
       - NODE_ENV=development
     build: .
@@ -16,4 +16,4 @@ services:
 networks:
   default:
     external: true
-    name: node-rabbitmq_pingpong
+    name: balamu

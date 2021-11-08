@@ -1,12 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AccountController } from './account.controller';
-import {
-  ClientsModule,
-  ClientProxy,
-  ClientProxyFactory,
-  Transport
-} from '@nestjs/microservices';
-import { ConfigService } from '@nestjs/config';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
@@ -15,8 +9,8 @@ import { ConfigService } from '@nestjs/config';
         name: 'ACCOUNT_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'accounts-rabbitmq',
-          port: 3008
+          host: 'balamu-accounts',
+          port: 3008,
         },
       },
     ]),
@@ -24,4 +18,4 @@ import { ConfigService } from '@nestjs/config';
   controllers: [AccountController],
   providers: [],
 })
-export class AccountModule { }
+export class AccountModule {}

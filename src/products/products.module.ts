@@ -5,7 +5,7 @@ import {
   ClientsModule,
   ClientProxy,
   ClientProxyFactory,
-  Transport
+  Transport,
 } from '@nestjs/microservices';
 
 @Module({
@@ -15,13 +15,13 @@ import {
         name: 'PRODUCTS_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'products-rabbitmq',
-          port: 3009
+          host: 'balamu-products',
+          port: 3009,
         },
       },
     ]),
   ],
   controllers: [ProductsController],
-  providers: []
+  providers: [],
 })
 export class ProductsModule {}
